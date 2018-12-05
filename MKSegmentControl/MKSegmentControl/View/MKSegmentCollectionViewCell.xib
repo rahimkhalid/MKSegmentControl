@@ -25,26 +25,15 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I am third" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugW-Cs-gSp">
                                 <rect key="frame" x="20" y="15.5" width="171" height="20.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZV-jc-vGL">
-                                <rect key="frame" x="20" y="41.5" width="171" height="2"/>
-                                <color key="backgroundColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="2" id="kJM-OQ-8dq"/>
-                                </constraints>
-                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ugW-Cs-gSp" firstAttribute="centerY" secondItem="xWC-vX-vIc" secondAttribute="centerY" id="A86-9e-6dd"/>
                             <constraint firstAttribute="trailing" secondItem="ugW-Cs-gSp" secondAttribute="trailing" constant="20" id="LIX-Zc-x50"/>
                             <constraint firstItem="ugW-Cs-gSp" firstAttribute="centerX" secondItem="xWC-vX-vIc" secondAttribute="centerX" id="RB3-5j-BXq"/>
-                            <constraint firstItem="bZV-jc-vGL" firstAttribute="top" secondItem="ugW-Cs-gSp" secondAttribute="bottom" constant="5" id="VvC-tw-XgT"/>
                             <constraint firstItem="ugW-Cs-gSp" firstAttribute="leading" secondItem="xWC-vX-vIc" secondAttribute="leading" constant="20" id="Xyu-lr-33U"/>
-                            <constraint firstItem="bZV-jc-vGL" firstAttribute="trailing" secondItem="ugW-Cs-gSp" secondAttribute="trailing" id="fV1-YX-AHd"/>
-                            <constraint firstItem="bZV-jc-vGL" firstAttribute="leading" secondItem="ugW-Cs-gSp" secondAttribute="leading" id="xQt-D4-AM4"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -58,7 +47,6 @@
             <viewLayoutGuide key="safeArea" id="NXY-a9-cuV"/>
             <size key="customSize" width="211" height="50"/>
             <connections>
-                <outlet property="selectedIndicatorView" destination="bZV-jc-vGL" id="BmA-mn-dET"/>
                 <outlet property="titleLabel" destination="ugW-Cs-gSp" id="TL0-Ek-v0c"/>
             </connections>
             <point key="canvasLocation" x="-307" y="698"/>

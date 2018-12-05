@@ -29,7 +29,6 @@ class MKSegmentControlCollectionView: UIView{
             view.setupControl()
             return view
         }
-        
         return UIView() as! MKSegmentControlCollectionView
     }
     
@@ -44,16 +43,25 @@ class MKSegmentControlCollectionView: UIView{
     }
     
     func setupSelectionIndicator() {
-        let frame = CGRect(x: 20, y: 35.5, width: labelWidthArray.first ?? 0 - 20, height: 2.0)
+        
+        var frame = CGRect(x: 20, y: 35.5, width: self.cellWidthArray[selectedIndex.row] - 40, height: 2.0)
+        if collectionView.visibleCells.count != 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MKSegmentCollectionViewCell", for: selectedIndex) as! MKSegmentCollectionViewCell
+            frame = CGRect(x: cell.frame.origin.x + cell.titleLabel.frame.origin.x, y: 35.5, width: self.cellWidthArray[selectedIndex.row] - 40, height: 2.0)
+        }
+        
         indicatorView.frame = frame
         indicatorView.backgroundColor = UIColor.red
-        self.addSubview(indicatorView)
+        
     }
     
     func updateSegmentControl (titleArray:[String]){
         segmentControlLableArray = titleArray
         getWidthForSegmentControl()
-        setupSelectionIndicator()
+        if segmentControlLableArray.count > 0{
+            setupSelectionIndicator()
+        }
+        collectionView.addSubview(indicatorView)
         collectionView.reloadData()
         collectionView.layoutIfNeeded()
         collectionView.layoutSubviews()
@@ -64,6 +72,14 @@ class MKSegmentControlCollectionView: UIView{
         collectionView.reloadData()
         collectionView.layoutIfNeeded()
         collectionView.layoutSubviews()
+        setupCollectionViewScrollPosition()
+        if segmentControlLableArray.count > 0{
+            setupSelectionIndicator()
+        }
+    }
+    
+    func setupCollectionViewScrollPosition() {
+        collectionView.scrollToItem(at: selectedIndex, at: .centeredHorizontally, animated: true)
     }
     
     func getWidthForSegmentControl() {
@@ -92,11 +108,6 @@ class MKSegmentControlCollectionView: UIView{
         }
     }
     
-    func removeSelectionFromPreviousSegment() {
-        let cell = collectionView.cellForItem(at: selectedIndex) as! MKSegmentCollectionViewCell
-        cell.selectedIndicatorView.isHidden = true
-        
-    }
 }
 
 extension MKSegmentControlCollectionView: UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
@@ -116,30 +127,12 @@ extension MKSegmentControlCollectionView: UICollectionViewDataSource,UICollectio
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! MKSegmentCollectionViewCell
-        
-        var isSelected = false
-        
-        UIView.animate(withDuration: 0.3, delay: 0, options: .allowUserInteraction, animations: {
-
-            collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
-            
-        }) { (_) in
-            self.indicatorView.isHidden = false
-            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-
-                let frame = CGRect(x: cell.frame.origin.x + cell.titleLabel.frame.origin.x - collectionView.contentOffset.x, y: 35.5 , width: self.cellWidthArray[indexPath.row] - 40, height: 2.0)
-                self.indicatorView.frame = frame
-                self.removeSelectionFromPreviousSegment()
-            }) { (_) in
-                
-                self.selectedIndex = indexPath
-                self.indicatorView.isHidden = true
-                isSelected = indexPath.row == self.selectedIndex.row ? true : false
-                cell.selectedIndicatorView.isHidden = !isSelected
-            }
-        }
-        
-        
+        selectedIndex = indexPath
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        UIView.animate(withDuration: 0.3, animations: {
+            let frame = CGRect(x: cell.frame.origin.x + cell.titleLabel.frame.origin.x, y: 35.5 , width: self.cellWidthArray[indexPath.row] - 40, height: 2.0)
+            self.indicatorView.frame = frame
+        })
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

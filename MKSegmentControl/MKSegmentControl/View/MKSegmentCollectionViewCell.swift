@@ -10,14 +10,9 @@ import UIKit
 class MKSegmentCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var selectedIndicatorView: UIView!
     
     func populateCell(title: String, isSelected:Bool){
         titleLabel.text = title
-        selectedIndicatorView.isHidden = !isSelected
     }
     
-    func toggleSelection() {
-        selectedIndicatorView.isHidden = !selectedIndicatorView.isHidden
-    }
 }
