@@ -12,11 +12,9 @@ class MKSegmentControlCollectionView: UIView{
     private(set) var segmentControlLableArray: [String] = []{
         didSet{
             cellWidthArray = Array<CGFloat>(repeating: 0, count: segmentControlLableArray.count)
-            labelWidthArray = Array<CGFloat>(repeating: 0, count: segmentControlLableArray.count)
         }
     }
     private var cellWidthArray:[CGFloat] = []
-    private var labelWidthArray:[CGFloat] = []
     @IBOutlet weak var collectionView: UICollectionView!
     let minWidth:CGFloat = 70
     private let indicatorView:UIView = UIView()
@@ -89,8 +87,6 @@ class MKSegmentControlCollectionView: UIView{
         for index in 0..<segmentControlLableArray.count{
             
             width = segmentControlLableArray[index].width(withConstrainedHeight: 20.33, font: UIFont.systemFont(ofSize: 17, weight: .bold))
-            
-            labelWidthArray[index] = width
             width += 40
             
             if width < minWidth {
