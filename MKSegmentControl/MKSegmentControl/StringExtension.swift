@@ -2,7 +2,7 @@
 //  StringExtension.swift
 //  MKSegmentControl
 //
-//  Created by vd-rahim on 11/20/18.
+//  Created by Rahim on 11/20/18.
 //
 
 import Foundation

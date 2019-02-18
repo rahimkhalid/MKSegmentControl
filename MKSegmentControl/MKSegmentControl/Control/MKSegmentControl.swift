@@ -2,7 +2,7 @@
 //  MKSegmentControl.swift
 //  MKSegmentControl
 //
-//  Created by vd-rahim on 11/19/18.
+//  Created by Rahim on 11/19/18.
 //
 
 import Foundation
@@ -38,7 +38,6 @@ class MKSegmentControl {
         if segmentControl == nil{
             segmentControl = MKSegmentControlCollectionView.getView()
         }
-        
         segmentControl.updateSegmentControl(titleArray: titles)
         segmentControl.frame = presenter.bounds
         presenter.addSubview(segmentControl)
@@ -49,7 +48,4 @@ class MKSegmentControl {
         self.titles = titles
         segmentControl.updateSegmentControl(titleArray: titles)
     }
-    
-    
-    
 }

@@ -2,7 +2,7 @@
 //  MKSegmentControlCollectionView.swift
 //  MKSegmentControl
 //
-//  Created by vd-rahim on 11/19/18.
+//  Created by Rahim on 11/19/18.
 //
 
 import UIKit
@@ -37,16 +37,20 @@ class MKSegmentControlCollectionView: UIView{
     }
     
     func registerNib(){
-        collectionView.register(UINib(nibName: "MKSegmentCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MKSegmentCollectionViewCell")
+        collectionView.register(MKSegmentCollectionViewCell.self, forCellWithReuseIdentifier: "MKSegmentCollectionViewCell")
     }
     
     func setupSelectionIndicator() {
         
-        var frame = CGRect(x: 20, y: 35.5, width: self.cellWidthArray[selectedIndex.row] - 40, height: 2.0)
-        if collectionView.visibleCells.count != 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MKSegmentCollectionViewCell", for: selectedIndex) as! MKSegmentCollectionViewCell
-            frame = CGRect(x: cell.frame.origin.x + cell.titleLabel.frame.origin.x, y: 35.5, width: self.cellWidthArray[selectedIndex.row] - 40, height: 2.0)
+        var x: CGFloat = 20
+        if collectionView.visibleCells.count > 0 {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MKSegmentCollectionViewCell", for: selectedIndex) as? MKSegmentCollectionViewCell {
+                
+                x += cell.frame.origin.x + cell.titleLabel.frame.origin.x
+            }
         }
+        
+        let frame = CGRect(x: x, y: 68, width: self.cellWidthArray[selectedIndex.row] - 40, height: 2.0)
         
         indicatorView.frame = frame
         indicatorView.backgroundColor = UIColor.red
@@ -95,7 +99,14 @@ class MKSegmentControlCollectionView: UIView{
             totalWidth += width
             cellWidthArray[index] = width
         }
-        let screenWidth = UIScreen.main.bounds.width
+        
+        let currentOrientation = UIApplication.shared.statusBarOrientation
+        var screenWidth = UIScreen.main.bounds.width
+        
+        if currentOrientation != .portrait {
+            let safeareaInset = UIApplication.shared.keyWindow!.safeAreaInsets
+            screenWidth -= (safeareaInset.left + safeareaInset.right)
+        }
         if totalWidth < screenWidth {
             let toBeDividedWidth = (screenWidth - totalWidth) / CGFloat(segmentControlLableArray.count)
             for index in 0..<segmentControlLableArray.count {
@@ -122,17 +133,16 @@ extension MKSegmentControlCollectionView: UICollectionViewDataSource,UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! MKSegmentCollectionViewCell
+        
         selectedIndex = indexPath
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         UIView.animate(withDuration: 0.3, animations: {
-            let frame = CGRect(x: cell.frame.origin.x + cell.titleLabel.frame.origin.x, y: 35.5 , width: self.cellWidthArray[indexPath.row] - 40, height: 2.0)
-            self.indicatorView.frame = frame
+            self.setupSelectionIndicator()
         })
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: cellWidthArray[indexPath.row], height: 25)
+        return CGSize(width: cellWidthArray[indexPath.row], height: 60)
     }
     
     

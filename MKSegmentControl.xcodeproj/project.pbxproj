@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		ED1719A121A4590900095C00 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1719A021A4590900095C00 /* StringExtension.swift */; };
+		ED22E79B2211CE9A00D119EC /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED22E79A2211CE9A00D119EC /* UIViewExtension.swift */; };
+		ED7669C9221A798000695BDF /* MKSegmentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7669C8221A798000695BDF /* MKSegmentItem.swift */; };
+		ED7669CB221A7DEB00695BDF /* MKBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7669CA221A7DEB00695BDF /* MKBadgeView.swift */; };
+		ED7669CD221A7E0200695BDF /* MKBadgeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED7669CC221A7E0200695BDF /* MKBadgeView.xib */; };
 		EDF8919B21A2CB41006B654C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF8919A21A2CB41006B654C /* AppDelegate.swift */; };
 		EDF8919D21A2CB41006B654C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF8919C21A2CB41006B654C /* ViewController.swift */; };
 		EDF891A021A2CB41006B654C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDF8919E21A2CB41006B654C /* Main.storyboard */; };
@@ -23,6 +27,10 @@
 
 /* Begin PBXFileReference section */
 		ED1719A021A4590900095C00 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		ED22E79A2211CE9A00D119EC /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		ED7669C8221A798000695BDF /* MKSegmentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKSegmentItem.swift; sourceTree = "<group>"; };
+		ED7669CA221A7DEB00695BDF /* MKBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKBadgeView.swift; sourceTree = "<group>"; };
+		ED7669CC221A7E0200695BDF /* MKBadgeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MKBadgeView.xib; sourceTree = "<group>"; };
 		EDF8919721A2CB41006B654C /* MKSegmentControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKSegmentControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDF8919A21A2CB41006B654C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDF8919C21A2CB41006B654C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +57,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED35E56E21B9944400B226F4 /* MKSegmentControlCellTypes */ = {
+			isa = PBXGroup;
+			children = (
+				EDF891C221A2E5F9006B654C /* MKSegmentCollectionViewCell.xib */,
+				EDF891C421A2E60F006B654C /* MKSegmentCollectionViewCell.swift */,
+				ED7669CA221A7DEB00695BDF /* MKBadgeView.swift */,
+				ED7669CC221A7E0200695BDF /* MKBadgeView.xib */,
+			);
+			path = MKSegmentControlCellTypes;
+			sourceTree = "<group>";
+		};
 		EDF8918E21A2CB41006B654C = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				EDF891C621A2E6F1006B654C /* MKSegmentControlConfiguration.swift */,
+				ED7669C8221A798000695BDF /* MKSegmentItem.swift */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -101,10 +121,10 @@
 		EDF891BA21A2DCAA006B654C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				ED35E56E21B9944400B226F4 /* MKSegmentControlCellTypes */,
 				EDF891BE21A2E3D1006B654C /* MKSegmentControlCollectionView.xib */,
 				EDF891C021A2E41F006B654C /* MKSegmentControlCollectionView.swift */,
-				EDF891C221A2E5F9006B654C /* MKSegmentCollectionViewCell.xib */,
-				EDF891C421A2E60F006B654C /* MKSegmentCollectionViewCell.swift */,
+				ED22E79A2211CE9A00D119EC /* UIViewExtension.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -177,6 +197,7 @@
 			files = (
 				EDF891BF21A2E3D1006B654C /* MKSegmentControlCollectionView.xib in Resources */,
 				EDF891C321A2E5F9006B654C /* MKSegmentCollectionViewCell.xib in Resources */,
+				ED7669CD221A7E0200695BDF /* MKBadgeView.xib in Resources */,
 				EDF891A521A2CB42006B654C /* LaunchScreen.storyboard in Resources */,
 				EDF891A221A2CB42006B654C /* Assets.xcassets in Resources */,
 				EDF891A021A2CB41006B654C /* Main.storyboard in Resources */,
@@ -196,6 +217,9 @@
 				EDF891C521A2E60F006B654C /* MKSegmentCollectionViewCell.swift in Sources */,
 				EDF891C121A2E41F006B654C /* MKSegmentControlCollectionView.swift in Sources */,
 				ED1719A121A4590900095C00 /* StringExtension.swift in Sources */,
+				ED7669CB221A7DEB00695BDF /* MKBadgeView.swift in Sources */,
+				ED22E79B2211CE9A00D119EC /* UIViewExtension.swift in Sources */,
+				ED7669C9221A798000695BDF /* MKSegmentItem.swift in Sources */,
 				EDF891BD21A2DD0C006B654C /* MKSegmentControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
